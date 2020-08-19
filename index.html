@@ -8,15 +8,18 @@
     <script src="js/src/note-model.js"></script>
     <script src="js/src/note-list-model.js"></script>
     <script src="js/src/note-list-view.js"></script>
+    <script src="js/src/single-note-view.js"></script>
     <script src="js/src/note-controller.js"></script>
+    <script src="js/spec/assert.js"></script>
   </head>
 
   <body>
     <div id='app'>hello</div>
       <script>
-        var nc = new NoteController();
-        nc.changeGreeting();
+        var notecontroller = new NoteController(NoteList);
+        notecontroller.changeHTML();
       </script>
+      <script src="js/spec/note-tests.js"></script>
   </body>
 
 </html>

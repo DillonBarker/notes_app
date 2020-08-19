@@ -1,5 +1,4 @@
 (function(exports) {
-
   it('Note has text', function() {
     var note = new Note("JavaScript is the best.")
     assert.isTrue(note.text === "JavaScript is the best.")
@@ -45,6 +44,29 @@
     notelist.createNote("Third Note");
     notelistview = new NoteListView(notelist)
     assert.isTrue(notelistview.view() === ("<ul><li><div>First Note</div></li><li><div>Second Note</div></li><li><div>Third Note</div></li></ul>"))
+  });
+  it('Note Controller changes html for page', function() {
+    var NoteDouble = function() {
+      this.text = 'Favourite food: pizza';
+    }
+    NoteDouble.prototype.getText = function() {
+      return this.text
+    }
+    var notelist = new NoteList(NoteDouble);
+    
+      notelist.listNotes = function() {
+        return [(new NoteDouble())];
+      }
+    var noteController = new NoteController(notelist);
+    noteController.changeHTML();
+
+    assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div>Favourite food: pizza</div></li></ul>')
+  });
+  it('Single note view returns a string of HTML representing the note model', function() {
+    var note = new Note('I miss Ruby.')
+    var singlenoteview = new SingleNoteView(note);
+    console.log(singlenoteview.divHTML())
+    assert.isTrue(singlenoteview.divHTML() === "<div>I miss Ruby.</div>")
   });
 
 })(this);

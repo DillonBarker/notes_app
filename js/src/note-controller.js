@@ -1,14 +1,13 @@
 (function(exports) {
-  function NoteController() {
-    this.notelist = new NoteList(Note);
-    this.notelist.createNote("my fav drink is fanta")
-    this.notelistview = new NoteListView(this.notelist)
+  function NoteController(notelist) {
+    this.notelist = notelist;
+    this.notelist.createNote("Favourite food: pizza & pasta");
+    this.notelistview = new NoteListView(this.notelist);
   }
 
-  NoteController.prototype.changeGreeting = function() {
-    var html = this.notelistview.view();
-    element = document.getElementById("app")
-    element.innerHTML = html;
+  NoteController.prototype.changeHTML = function() {
+    var html = this.notelistview.view(); 
+    document.getElementById("app").innerHTML = html
   };
 
   exports.NoteController = NoteController;
