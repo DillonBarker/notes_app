@@ -4,6 +4,11 @@
       if (!assertionToCheck) {
         throw new Error();
       }
+    },
+    isFalse: function(assertionToCheck) {
+      if (assertionToCheck) {
+        throw new Error();
+      }
     }
   };
 
