@@ -26,7 +26,7 @@
       assert.isTrue(notelist.listNotes()[0].getText() === "First Note")
       assert.isTrue(notelist.listNotes()[1].getText() === "Second Note")
     });
-  })
+  });
 
   dillscribe('Notelist View Class', function() {
     it('Notelist view will show an empty tag when there are no notes', function() {
@@ -50,6 +50,7 @@
       notelistview = new NoteListView(notelist)
       assert.isTrue(notelistview.view() === ("<ul><li><div>First Note...</div></li><li><div>Second Note...</div></li><li><div>Third Note...</div></li></ul>"))
     });
+    
     it('Notelist view will stop viewing note at 20 characters in the view', function() {
       var notelist = new NoteList(Note);
       notelist.createNote("12345678901234567890xxxxxxxxxxxxxx");
