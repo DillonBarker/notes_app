@@ -1,7 +1,7 @@
 (function(exports) {
-  function NoteController(notelist) {
-    this.notelist = notelist;
-    this.notelistview = new NoteListView(this.notelist);
+  function NoteController(notelist, notelistviewClass) {
+    this.notelistviewClass = notelistviewClass;
+    this.notelistview = new this.notelistviewClass(notelist)
   }
 
   NoteController.prototype.changeHTML = function() {

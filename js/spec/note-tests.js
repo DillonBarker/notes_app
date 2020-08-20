@@ -61,20 +61,18 @@
   
   dillscribe('Note Controller Class', function() {
     it('Note Controller changes html for page', function() {
-      var NoteDouble = function() {
-        this.text = 'Favourite food: pizza';
-      }
-      NoteDouble.prototype.getText = function() {
-        return this.text
-      }
-      var notelist = new NoteList(NoteDouble);
+      var noteList
+      var noteListView = function() {};
+
+      noteListView.prototype.view = function() {
+        return "<ul><li><div>Favourite food: pizz...</div></li></ul>"
+      };
       
-        notelist.listNotes = function() {
-          return [(new NoteDouble())];
-        }
-      var noteController = new NoteController(notelist);
-      noteController.changeHTML();
-      assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div>Favourite food: pizz...</div></li></ul>')
+      var notelistcontroller = new NoteController(noteList, noteListView);
+      
+      notelistcontroller.changeHTML();
+      
+      assert.isTrue(document.getElementById("app").innerHTML === "<ul><li><div>Favourite food: pizz...</div></li></ul>")
     });
   });
 
