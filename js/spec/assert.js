@@ -7,6 +7,11 @@
     }
   };
 
+  function dillscribe(desc, fn) {
+    console.log(desc);
+    fn();
+  };
+
   function it(desc, fn) {
    try {
      fn();
@@ -17,6 +22,7 @@
    }
   }
   
+  exports.dillscribe = dillscribe;
   exports.it = it;
   exports.assert = assert;
 })(this);
