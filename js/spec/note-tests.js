@@ -9,6 +9,11 @@
       var note = new Note("I miss Ruby.")
       assert.isTrue(note.getText() === "I miss Ruby.")
     });
+
+    it('Note has ID', function() {
+      var note = new Note("Alexis.")
+      assert.isTrue(note.id === 0)
+    })
   });
   
   dillscribe('Notelist Class', function() {
@@ -26,6 +31,12 @@
       assert.isTrue(notelist.listNotes()[0].getText() === "First Note")
       assert.isTrue(notelist.listNotes()[1].getText() === "Second Note")
     });
+    it('Notelist increments ID', function() {
+      var notelist = new NoteList(Note);
+      notelist.createNote("First Note");
+      notelist.createNote("Second Note");
+      assert.isTrue(notelist.listNotes()[1].id === 1)
+    })
   });
 
   dillscribe('Notelist View Class', function() {
