@@ -39,7 +39,7 @@
       var notelist = new NoteList(Note);
       notelist.createNote("First Note");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note...</div></li></ul>"))
     });
 
     it('Notelist view can show several notes with tags', function() {
@@ -48,13 +48,13 @@
       notelist.createNote("Second Note");
       notelist.createNote("Third Note");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note</div></li><li><div>Second Note</div></li><li><div>Third Note</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note...</div></li><li><div>Second Note...</div></li><li><div>Third Note...</div></li></ul>"))
     });
     it('Notelist view will stop viewing note at 20 characters in the view', function() {
       var notelist = new NoteList(Note);
       notelist.createNote("12345678901234567890xxxxxxxxxxxxxx");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>12345678901234567890</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div>12345678901234567890...</div></li></ul>"))
     });
   });
   
@@ -73,7 +73,7 @@
         }
       var noteController = new NoteController(notelist);
       noteController.changeHTML();
-      assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div>Favourite food: pizz</div></li></ul>')
+      assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div>Favourite food: pizz...</div></li></ul>')
     });
   });
 
