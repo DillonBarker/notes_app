@@ -50,7 +50,7 @@
       var notelist = new NoteList(Note);
       notelist.createNote("First Note");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note...</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div><a href='#notes/0'>First Note...</a></div></li></ul>"))
     });
 
     it('Notelist view can show several notes with tags', function() {
@@ -59,14 +59,14 @@
       notelist.createNote("Second Note");
       notelist.createNote("Third Note");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>First Note...</div></li><li><div>Second Note...</div></li><li><div>Third Note...</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div><a href='#notes/0'>First Note...</a></div></li><li><div><a href='#notes/1'>Second Note...</a></div></li><li><div><a href='#notes/2'>Third Note...</a></div></li></ul>"))
     });
     
     it('Notelist view will stop viewing note at 20 characters in the view', function() {
       var notelist = new NoteList(Note);
       notelist.createNote("12345678901234567890xxxxxxxxxxxxxx");
       notelistview = new NoteListView(notelist)
-      assert.isTrue(notelistview.view() === ("<ul><li><div>12345678901234567890...</div></li></ul>"))
+      assert.isTrue(notelistview.view() === ("<ul><li><div><a href='#notes/0'>12345678901234567890...</a></div></li></ul>"))
     });
   });
   
@@ -74,16 +74,12 @@
     it('Note Controller changes html for page', function() {
       var noteList
       var noteListView = function() {};
-
       noteListView.prototype.view = function() {
-        return "<ul><li><div>Favourite food: pizz...</div></li></ul>"
+        return "<ul><li><div><a href='#notes/0'>Favourite food: pizz...</a></div></li></ul>"
       };
-      
       var notelistcontroller = new NoteController(noteList, noteListView);
-      
       notelistcontroller.changeHTML();
-      
-      assert.isTrue(document.getElementById("app").innerHTML === "<ul><li><div>Favourite food: pizz...</div></li></ul>")
+      assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div><a href="#notes/0">Favourite food: pizz...</a></div></li></ul>')
     });
   });
 
