@@ -1,8 +1,8 @@
 (function(exports) {
 
-  function NoteList(noteClass) {
+  function NoteList(note) {
     this.list = [];
-    this.noteClass = noteClass;
+    this.note = note;
     this.accumulator = 0;
   }
     NoteList.prototype.listNotes = function() {
@@ -10,7 +10,7 @@
     }
 
   NoteList.prototype.createNote = function(text) {
-     var note = new this.noteClass(text)
+     var note = new this.note(text)
      note.id = this.accumulator;
      this.list.push(note);
      this.accumulator += 1

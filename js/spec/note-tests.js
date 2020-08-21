@@ -1,3 +1,5 @@
+
+
 (function(exports) {
   dillscribe('Note Class', function() {
     it('Note has text', function() {
@@ -72,14 +74,25 @@
   
   dillscribe('Note Controller Class', function() {
     it('Note Controller changes html for page', function() {
-      var noteList
-      var noteListView = function() {};
-      noteListView.prototype.view = function() {
-        return "<ul><li><div><a href='#notes/0'>Favourite food: pizz...</a></div></li></ul>"
-      };
-      var notelistcontroller = new NoteController(noteList, noteListView);
-      notelistcontroller.changeHTML();
+     function NoteControllerDouble() {};
+        NoteControllerDouble.mockChangeHTML = function() {
+          document.getElementById("app").innerHTML = '<ul><li><div><a href="#notes/0">Favourite food: pizz...</a></div></li></ul>'
+        }
+      NoteControllerDouble.mockChangeHTML();
       assert.isTrue(document.getElementById("app").innerHTML === '<ul><li><div><a href="#notes/0">Favourite food: pizz...</a></div></li></ul>')
+    });
+
+    it('Note controller displays a single note view when clicked', function() {
+      var noteListDouble;
+      
+      var noteController = new NoteController(noteListDouble);
+        document.getElementById("app").innerHTML = '<ul><li><div><a href="#notes/0">Favourite food: pest</a></div></li></ul>';
+        noteController.watchURL();
+        window.location.hash = '#notes/0';
+        const hashchange = new Event('hashchange')
+        window.dispatchEvent(hashchange);
+        console.log(document.getElementById("app").innerHTML);
+        assert.isTrue(document.getElementById("app").innerHTML === "<div>Favourite food: pesto</div>");
     });
   });
 
@@ -90,5 +103,6 @@
       assert.isTrue(singlenoteview.divHTML() === "<div>I miss Ruby.</div>")
     });
   });
+
 
 })(this);
