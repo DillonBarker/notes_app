@@ -1,3 +1,5 @@
+
+
 (function(exports) {
   dillscribe('Note Class', function() {
     it('Note has text', function() {
@@ -81,16 +83,18 @@
     });
 
     it('Note controller displays a single note view when clicked', function() {
-      // var noteListDouble;
-      
-      // var noteController = new NoteController(noteListDouble);
-      //   document.getElementById("app").innerHTML = '<ul><li><div><a href="#notes/0">Favourite food: pesto</a></div></li></ul>';
-      //   noteController.watchURL();
-      //   window.location.hash = '#notes/0';
-      //   const hashchange = new Event('hashchange')
-      //   window.dispatchEvent(hashchange);
-      //   console.log(document.getElementById("app").innerHTML);
-      //   assert.isTrue(document.getElementById("app").innerHTML === "<div>Favourite food: pesto</div>");
+      var noteList = new NoteList(Note)
+        noteList.createNote("testing123")
+        
+      var noteController = new NoteController(noteList);
+        document.getElementById("app").innerHTML = '<ul><li><div><a href="#notes/0">testing123</a></div></li></ul>';
+        
+        noteController.watchURL();
+        window.location.hash = '#notes/0';
+        const hashchange = new Event('hashchange')
+        window.dispatchEvent(hashchange);
+        
+        assert.isTrue(document.getElementById("app").innerHTML === "<div>testing123</div>");
     });
   });
 
