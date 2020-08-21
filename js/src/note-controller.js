@@ -30,13 +30,14 @@
         .addEventListener("click", function(clickEvent) {
           clickEvent.preventDefault();
           console.log(clickEvent)
+          console.log(clickEvent.path[1][0].innerHTML)
           doSomething();
         });
     
     function doSomething() {
       console.log("yolo")
     }
-    };
+  };
 
   return {
     noteListView,
