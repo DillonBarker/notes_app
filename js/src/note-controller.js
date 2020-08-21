@@ -24,10 +24,25 @@
       location = window.location
       return location.hash.split("#notes/")[1];
     };
+    function listenForSubmit() {
+      document
+        .getElementById("submit")
+        .addEventListener("click", function(clickEvent) {
+          clickEvent.preventDefault();
+          console.log(clickEvent)
+          doSomething();
+        });
+    
+    function doSomething() {
+      console.log("yolo")
+    }
+    };
+
   return {
     noteListView,
     changeHTML,
     watchURL,
+    listenForSubmit,
   }
 })();
 

@@ -13,16 +13,15 @@
     <script src="js/src/note-controller.js"></script>
     <script src="js/spec/assert.js"></script>
   </head>
-  <center>
-    <body>
-      <div id='app'><h2>Notes will go here</h2></div>
-        <br><br>
-        <form method="post" action="#notes">
-          <textarea id="text" name="createnote" rows="4" cols="50"
-          >Type a note in here! I will store it for you.
-          </textarea><br>
-          <input type="submit" id="submit" value="Post a note"/>
-        </form>
-    </body>
-  </center>
+
+  <body>
+    <div id='app'>hello</div>
+      <script src="js/spec/note-tests.js"></script>
+      <form method="post" action="#notes">
+        <label for="createnote">Type Here:</label>
+        <input type="text" id="text" name="createnote">
+        <input type="submit" value="Submit"/>
+      </form>
+  </body>
+
 </html>
