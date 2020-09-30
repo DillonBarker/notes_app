@@ -1,6 +1,8 @@
 # Notes App Using Pure Javascript
 
-Build a notes app as a frontend, single page web app. You'll be guided through this by the high-level challenges listed below. However, there will be no walkthroughs.
+## Goals:
+- Build a notes app as a frontend, single page web app.
+- Use a self curated testing framework
 
 User Stories:
 
@@ -18,3 +20,7 @@ I can see the full text of an individual note on its own page
 So I can see all the information in the note
 ```
 **Notes do not need to be permanently stored. If the user refreshes their web page, they'll lose their notes, and that's fine**
+
+## To use
+- clone this repo
+- 
